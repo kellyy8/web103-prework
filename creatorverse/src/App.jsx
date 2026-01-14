@@ -42,8 +42,8 @@ function App() {
   ]);
 
   useEffect(() => {
-    async function getCreators() {
-      let { data: result, error } = await supabase.from('creators').select('*');
+    async function getAllCreators() {
+      const { data: result, error } = await supabase.from('creators').select('*');
 
       if (error) {
         console.log('Error fetching creators:', error);
@@ -53,7 +53,7 @@ function App() {
       }
     }
 
-    getCreators();
+    getAllCreators();
   }, []);
 
   return element;
