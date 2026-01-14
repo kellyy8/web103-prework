@@ -6,10 +6,13 @@
 
 import React from 'react';
 
-function CreatorCard(){
+function CreatorCard({creator}){
     return(
-        <>
-        </>
+        <div>
+            <p>{creator.name}</p>
+            <p>{creator.url}</p>
+            <p>{creator.description}</p>
+        </div>
     )
 }
 
