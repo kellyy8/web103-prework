@@ -7,6 +7,38 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client.js';
 
 function EditCreatorPage({getAllCreators}) {
+    const editPageStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        textAlign: 'left',
+        minWidth: '80vh',
+    }
+
+    const buttonWrapper = {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: '10%',
+    }
+
+    const submitButtonStyle = {
+        width: '45%',
+        background: 'green',
+        border: 'none',
+        borderRadius: '0.5em',
+        fontWeight: 'bold',
+        padding: '0.5em',
+    }
+
+    const deleteButtonStyle = {
+        width: '45%',
+        background: 'darkred',
+        border: 'none',
+        borderRadius: '0.5em',
+        fontWeight: 'bold',
+        padding: '0.5em',
+    }
+
     const { id } = useParams();
     const navigate = useNavigate();
     const [creator, setCreator] = useState({});
@@ -64,8 +96,8 @@ function EditCreatorPage({getAllCreators}) {
     {/** TODO: mark required fields! */}
     return(
         <>
-            <form onSubmit={(e) => updateCreator(e)}>
-                <label for='name'/>
+            <form onSubmit={(e) => updateCreator(e)} style={editPageStyle}>
+                <label for='name'>Name*</label>
                 <input
                     id='name'
                     name='name'
@@ -73,7 +105,8 @@ function EditCreatorPage({getAllCreators}) {
                     value={creator.name}
                     onChange={(e) => {setCreator({...creator, name: e.target.value})}}
                 />
-                <label for='description'/>
+                <br/>
+                <label for='description'>Description*</label>
                 <input
                     id='description'
                     name='description'
@@ -81,7 +114,8 @@ function EditCreatorPage({getAllCreators}) {
                     value={creator.description}
                     onChange={(e) => {setCreator({...creator, description: e.target.value})}}
                 />
-                <label for='url'/>
+                <br/>
+                <label for='url'>URL*</label>
                 <input
                     id='url'
                     name='url'
@@ -89,7 +123,8 @@ function EditCreatorPage({getAllCreators}) {
                     value={creator.url}
                     onChange={(e) => {setCreator({...creator, url: e.target.value})}}
                 />
-                <label for='imageURL'/>
+                <br/>
+                <label for='imageURL'>Image URL</label>
                 <input
                     id='imageURL'
                     name='imageURL'
@@ -97,11 +132,20 @@ function EditCreatorPage({getAllCreators}) {
                     value={creator.imageURL}
                     onChange={(e) => {setCreator({...creator, imageURL: e.target.value})}}
                 />
-                <input
-                    type='submit'
-                    value='Submit'
-                />
-                <button onClick={deleteCreator}>Delete</button>
+                <br/>
+                <div style={buttonWrapper}>
+                    <input
+                        style={submitButtonStyle}
+                        type='submit'
+                        value='Submit'
+                    />
+                    <input
+                        style={deleteButtonStyle}
+                        type='button'
+                        value='Delete'
+                        onClick={deleteCreator}
+                    />
+                </div>
             </form>
         </>
     )

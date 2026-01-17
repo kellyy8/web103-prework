@@ -7,12 +7,30 @@
 import { Link } from 'react-router-dom';
 
 function CreatorCard({creator}){
+    const cardStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        border: 'solid white 1px',
+        borderRadius: '8px',
+        width: '30%',
+        padding: '1em',
+        margin: '1em',
+    };
+
+    const imageStyle = {
+        borderRadius: '8px',
+        maxWidth: '100%',
+    }
+    
     return(
-        <div>
-            {creator.imageURL && <img src={creator.imageURL} width='50%' height='50%'/>}
+        <div style={cardStyle}>
+            {creator.imageURL && <img src={creator.imageURL} style={imageStyle}/>}
             <p>{creator.name}</p>
             <p>{creator.description}</p>
-            <Link to={creator.url}>{creator.url}</Link>
+            <Link to={creator.url} target="_blank">{creator.url}</Link>
+            <br/>
             <Link to={`/view/${creator.id}`}>VIEW</Link>
             <Link to={`/edit/${creator.id}`}>EDIT</Link>
         </div>

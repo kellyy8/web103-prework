@@ -7,6 +7,21 @@ import { Link, useParams } from 'react-router-dom';
 import { supabase } from '../client.js';
 
 function ViewCreatorPage() {
+    const cardStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifySelf: 'center',
+        border: 'solid white 1px',
+        borderRadius: '8px',
+        width: '30%',
+        padding: '1em',
+    };
+
+    const imageStyle = {
+        borderRadius: '8px',
+        maxWidth: '100%',
+    }
+
     const { id } = useParams();
     const [creator, setCreator] = useState(null);
 
@@ -29,17 +44,18 @@ function ViewCreatorPage() {
     }, [id]);
     
     return(
-        <>
+        <div style={cardStyle}>
             {creator && 
                 <>
-                    {creator.imageURL && <img src={creator.imageURL} width='50%' height='50%'/>}
+                    {creator.imageURL && <img src={creator.imageURL} style={imageStyle}/>}
                     <p>{creator.name}</p>
                     <p>{creator.description}</p>
-                    <Link to={creator.url}>{creator.url}</Link>
+                    <Link to={creator.url} target="_blank">{creator.url}</Link>
+                    <br/>
                     <Link to={`/edit/${creator.id}`}>EDIT</Link>
                 </>
             }
-        </>
+        </div>
     )
 }
 
