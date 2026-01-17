@@ -11,8 +11,8 @@ function CreatorCard({creator}){
         <div>
             {creator.imageURL && <img src={creator.imageURL} width='50%' height='50%'/>}
             <p>{creator.name}</p>
-            <p>{creator.url}</p>
             <p>{creator.description}</p>
+            <Link to={creator.url}>{creator.url}</Link>
             <Link to={`/view/${creator.id}`}>VIEW</Link>
             <Link to={`/edit/${creator.id}`}>EDIT</Link>
         </div>
