@@ -19,13 +19,28 @@ function EditCreatorPage({getAllCreators}) {
                 throw error;
             }
             console.log('Successfully updated creator!');
+            await getAllCreators();
+            navigate('/');
         }
         catch(error) {
             console.error('Error updating creator.', error.message);
         }
         
-        await getAllCreators();
-        navigate('/');
+    }
+
+    async function deleteCreator() {
+        try {
+            const { error } = await supabase.from('creators').delete().eq('id', id);
+            if (error) {
+                throw error;
+            }
+            console.log('Successfully deleted creator!');
+            await getAllCreators();
+            navigate('/');
+        }
+        catch (error) {
+            console.error('Error deleting creator.', error.message);
+        }
     }
 
     useEffect(() => {
@@ -86,6 +101,7 @@ function EditCreatorPage({getAllCreators}) {
                     type='submit'
                     value='Submit'
                 />
+                <button onClick={deleteCreator}>Delete</button>
             </form>
         </>
     )
