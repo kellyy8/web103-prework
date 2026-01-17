@@ -42,8 +42,8 @@ function App() {
       children: [
         {index: true, element: <ShowCreatorPage data={creators}/>},  // Main page
         {path: "add", element: <AddCreatorPage getAllCreators={getAllCreators}/>},
-        {path: "view/:id", element: <ViewCreatorPage />}, // TODO: Check if this works
-        {path: "edit/:id", element: <EditCreatorPage />}, // TODO: Check if this works
+        {path: "view/:id", element: <ViewCreatorPage />},
+        {path: "edit/:id", element: <EditCreatorPage getAllCreators={getAllCreators}/>},
       ]
     }
   ]);

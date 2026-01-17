@@ -15,6 +15,7 @@ function CreatorCard({creator}){
             <p>{creator.description}</p>
             {creator.imageURL && <p>{creator.imageURL}</p>} {/** TODO: update to image element */}
             <Link to={`/view/${creator.id}`}>VIEW</Link>
+            <Link to={`/edit/${creator.id}`}>EDIT</Link>
         </div>
     )
 }
