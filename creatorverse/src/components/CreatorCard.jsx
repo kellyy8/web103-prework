@@ -14,7 +14,7 @@ function CreatorCard({creator}){
         textAlign: 'center',
         border: 'solid white 1px',
         borderRadius: '8px',
-        width: '30%',
+        width: '25%',
         padding: '1em',
         margin: '1em',
     };

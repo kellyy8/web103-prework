@@ -13,7 +13,7 @@ function ViewCreatorPage() {
         justifySelf: 'center',
         border: 'solid white 1px',
         borderRadius: '8px',
-        width: '30%',
+        width: '50%',
         padding: '1em',
     };
 

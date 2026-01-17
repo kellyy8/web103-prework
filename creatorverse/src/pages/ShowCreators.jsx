@@ -8,6 +8,8 @@ function ShowCreatorPage({data}) {
     const showPageStyle = {
         display: 'flex',
         flex: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     }
 
     return(
