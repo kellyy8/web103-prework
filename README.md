@@ -34,9 +34,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kellyy8/web103-prework/blob/main/Creatorverse.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [Kap](https://getkap.co/)
+GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
