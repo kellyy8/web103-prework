@@ -2,7 +2,7 @@
  * For the user to update a content creator's information
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client.js';
 
@@ -51,10 +51,10 @@ function EditCreatorPage({getAllCreators}) {
                     throw error;
                 }
                 setCreator(data);
-                console.log('Successfully retrieved creator to update!');
+                console.log('Successfully fetched creator for updates!');
             }
             catch(error) {
-                console.error('Error fetching creator with id:', id, '.', error.message);
+                console.error('Error fetching creator for updates.', error.message);
             }
         }
 

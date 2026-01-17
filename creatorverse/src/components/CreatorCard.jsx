@@ -4,7 +4,6 @@
  *  so it can be displayed on the main page.
  */
 
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CreatorCard({creator}){

@@ -2,7 +2,6 @@
  * For showing all content creators
  */
 
-import React from 'react';
 import CreatorCard from '../components/CreatorCard';
 
 function ShowCreatorPage({data}) {

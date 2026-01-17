@@ -29,9 +29,10 @@ function App() {
         throw(error);
       }
       setCreators(result);
+      console.log('Sucessfully fetched all creators.');
     }
     catch (error) {
-      console.error('Error fetching all creators:', error.message)
+      console.error('Error fetching all creators.', error.message);
     }
   }
   

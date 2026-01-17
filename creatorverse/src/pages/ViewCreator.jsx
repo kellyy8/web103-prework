@@ -2,7 +2,7 @@
  * For viewing a single creator
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { supabase } from '../client.js';
 
@@ -18,9 +18,10 @@ function ViewCreatorPage() {
                     throw error;
                 }
                 setCreator({id: id, ...data});
+                console.log('Successfully fetched creator to view.');
             }
             catch (error) {
-                console.error('Error fetching creator with id:', id, '.', error.message);
+                console.error('Error fetching creator to view.', error.message);
             }
         }
 

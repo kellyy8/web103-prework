@@ -2,7 +2,6 @@
  * For the user to add a new content creator
  */
 
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../client.js';
 
@@ -25,14 +24,16 @@ function AddCreatorPage({getAllCreators}) {
             if (error) {
                 throw error;
             }
+            console.log('Successfully added creator!');
             await getAllCreators();
             navigate('/');
         }
         catch(error) {
-            console.error("Error adding creator:", error.message);
+            console.error('Error adding creator.', error.message);
         }
     }
 
+    {/** TODO: mark required fields! */}
     return(
         <>
             <h1>Add a new creator! </h1>
