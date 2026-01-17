@@ -20,13 +20,20 @@ const Layout = () => (
 );
 
 function App() {
-  {/**
-   * TODO: Polish
-   * 1. Defining the paths and elements for the main page, edit page, new page, and view page.
-   * 2. Inserting the element into the App container.
-   */}
-
   const [creators, setCreators] = useState([]);
+
+  async function getAllCreators() {
+    try {
+      const { data: result, error } = await supabase.from('creators').select('*');
+      if (error) {
+        throw(error);
+      }
+      setCreators(result);
+    }
+    catch (error) {
+      console.error('Error fetching all creators:', error.message)
+    }
+  }
   
   const element = useRoutes([
     {
@@ -34,7 +41,7 @@ function App() {
       element: <Layout/>,
       children: [
         {index: true, element: <ShowCreatorPage data={creators}/>},  // Main page
-        {path: "add", element: <AddCreatorPage />},
+        {path: "add", element: <AddCreatorPage getAllCreators={getAllCreators}/>},
         {path: "view/:id", element: <ViewCreatorPage />}, // TODO: Check if this works
         {path: "edit/:id", element: <EditCreatorPage />}, // TODO: Check if this works
       ]
@@ -42,17 +49,6 @@ function App() {
   ]);
 
   useEffect(() => {
-    async function getAllCreators() {
-      const { data: result, error } = await supabase.from('creators').select('*');
-
-      if (error) {
-        console.log('Error fetching creators:', error);
-      } else {
-        console.log('Creators:', result);
-        setCreators(result);
-      }
-    }
-
     getAllCreators();
   }, []);
 
