@@ -20,7 +20,7 @@ function ViewCreatorPage() {
                 setCreator({id: id, ...data});
             }
             catch (error) {
-                console.error("Error fetching creator with id:", id, '.', error);
+                console.error('Error fetching creator with id:', id, '.', error.message);
             }
         }
 
@@ -31,10 +31,10 @@ function ViewCreatorPage() {
         <>
             {creator && 
                 <>
+                    {creator.imageURL && <img src={creator.imageURL} width='50%' height='50%'/>}
                     <p>{creator.name}</p>
                     <p>{creator.url}</p>
                     <p>{creator.description}</p>
-                    {creator.imageURL && <p>{creator.imageURL}</p>} {/** TODO: update to image element */}
                     <Link to={`/edit/${creator.id}`}>EDIT</Link>
                 </>
             }

@@ -8,7 +8,7 @@ import CreatorCard from '../components/CreatorCard';
 function ShowCreatorPage({data}) {
     return(
         <>
-            <h1>SHOW PAGE</h1>
+            <h1>WELCOME TO CREATORVERSE!</h1>
             {data && data.length !== 0 ?
                 data.map((creator, index) => <CreatorCard key={index} creator={creator}/>)
             :

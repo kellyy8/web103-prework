@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom';
 function CreatorCard({creator}){
     return(
         <div>
+            {creator.imageURL && <img src={creator.imageURL} width='50%' height='50%'/>}
             <p>{creator.name}</p>
             <p>{creator.url}</p>
             <p>{creator.description}</p>
-            {creator.imageURL && <p>{creator.imageURL}</p>} {/** TODO: update to image element */}
             <Link to={`/view/${creator.id}`}>VIEW</Link>
             <Link to={`/edit/${creator.id}`}>EDIT</Link>
         </div>
