@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { supabase } from '../client.js';
 
 function ViewCreatorPage() {
@@ -12,13 +12,15 @@ function ViewCreatorPage() {
 
     useEffect(() => {
         async function getCreator(){
-            const { data: result, error } = await supabase.from('creators').select('*').eq('id', id).single();
-            
-            if (error) {
-                console.error("Error fetching creator with id:", id, error);
+            try {
+                const { data, error } = await supabase.from('creators').select('*').eq('id', id).single();
+                if (error) {
+                    throw error;
+                }
+                setCreator({id: id, ...data});
             }
-            else {
-                setCreator(result);
+            catch (error) {
+                console.error("Error fetching creator with id:", id, '.', error);
             }
         }
 
@@ -27,13 +29,13 @@ function ViewCreatorPage() {
     
     return(
         <>
-            <h1>VIEW PAGE</h1>
             {creator && 
                 <>
                     <p>{creator.name}</p>
                     <p>{creator.url}</p>
                     <p>{creator.description}</p>
                     {creator.imageURL && <p>{creator.imageURL}</p>} {/** TODO: update to image element */}
+                    <Link to={`/edit/${creator.id}`}>EDIT</Link>
                 </>
             }
         </>
